@@ -14,6 +14,11 @@ export interface DriverHeadline {
   post: string;
 }
 
+export interface BenefitCard {
+  label: string;
+  desc: string;
+}
+
 export interface Translations {
   nav: NavT;
   hero: {
@@ -37,8 +42,9 @@ export interface Translations {
   drivers: {
     eyebrow: string;
     headline: DriverHeadline;
-    sub: string;
-    benefits: [string, string, string];
+    escrowLead: string;
+    benefitCards: BenefitCard[];
+    ctaNote: string;
     cta1: string;
     cta2: string;
   };
@@ -49,6 +55,15 @@ export interface Translations {
     eyebrow: string;
     title: string;
     cards: { title: string; desc: string; badge: string }[];
+  };
+  driverTrust: {
+    eyebrow: string;
+    items: { title: string; desc: string }[];
+  };
+  driverTestimonial: {
+    quote: string;
+    name: string;
+    route: string;
   };
   cta: {
     headline: string;
@@ -142,14 +157,29 @@ const en: Translations = {
       orange: "baatwa",
       post: "always full.",
     },
-    sub: "Join thousands of verified drivers earning per trip. No boss, no fixed schedule — just you, your licence, and your next destination.",
-    benefits: [
-      "Weekly payouts straight to your bank — no middlemen.",
-      "KYC done once. Work gigs across the entire network.",
-      "Trip insurance on every gig, so you always ride safe.",
+    escrowLead:
+      "Your payment is locked in escrow before the trip starts. Finish the trip, get paid instantly.",
+    benefitCards: [
+      {
+        label: "Zero commission",
+        desc: "What you earn is 100% yours. We take nothing.",
+      },
+      {
+        label: "Gigs near you",
+        desc: "Browse trips by location. Work on your own terms.",
+      },
+      {
+        label: "Advance for the road",
+        desc: "Fuel and food advance credited before you start.",
+      },
+      {
+        label: "We've got your back",
+        desc: "Accident insurance on every trip, and we stand with you in any dispute.",
+      },
     ],
-    cta1: "Register as driver →",
-    cta2: "Join on WhatsApp",
+    ctaNote: "Launching soon",
+    cta1: "Download the app",
+    cta2: "Chat on WhatsApp",
   },
   proof: {
     stats: [
@@ -192,6 +222,29 @@ const en: Translations = {
         badge: "Only on Baatwa",
       },
     ],
+  },
+  driverTrust: {
+    eyebrow: "Why drivers trust Baatwa",
+    items: [
+      {
+        title: "Paid before you doubt it",
+        desc: "Payment locked in escrow the moment your trip confirms. No chasing, no excuses.",
+      },
+      {
+        title: "No middleman cut",
+        desc: "Zero platform commission. Every rupee the owner pays goes directly to you.",
+      },
+      {
+        title: "Proof on your side",
+        desc: "Timestamped handover photos stored on every trip. False blame doesn't stand a chance.",
+      },
+    ],
+  },
+  driverTestimonial: {
+    quote:
+      "Baatwa ne sach me time pe paisa diya. Pehli baar kisi ne bina chase kiye bheja.",
+    name: "Ramesh",
+    route: "Ranchi – Kolkata",
   },
   cta: {
     headline: "Your trucks shouldn't sit idle.",
@@ -286,14 +339,29 @@ const hi: Translations = {
       orange: "बाटवा",
       post: "हमेशा भरा।",
     },
-    sub: "हजारों सत्यापित ड्राइवरों से जुड़ें जो प्रति ट्रिप कमा रहे हैं। कोई बॉस नहीं, कोई फिक्स शेड्यूल नहीं — बस आप, आपका लाइसेंस और अगली मंजिल।",
-    benefits: [
-      "हर हफ्ते पेआउट सीधे बैंक में — कोई बिचौलिया नहीं।",
-      "KYC एक बार करें। पूरे नेटवर्क में कहीं भी गिग करें।",
-      "हर गिग पर ट्रिप बीमा — आप हमेशा सुरक्षित।",
+    escrowLead:
+      "ट्रिप शुरू होने से पहले ही पेमेंट एस्क्रो में लॉक हो जाता है। ट्रिप खत्म करो, तुरंत पैसा पाओ।",
+    benefitCards: [
+      {
+        label: "जीरो कमीशन",
+        desc: "जो कमाओ वो 100% तुम्हारा। हम एक पैसा नहीं काटते।",
+      },
+      {
+        label: "पास के गिग",
+        desc: "जगह के हिसाब से ट्रिप देखो। अपनी शर्तों पर काम करो।",
+      },
+      {
+        label: "रास्ते का एडवांस",
+        desc: "निकलने से पहले ईंधन और खाने का एडवांस मिलता है।",
+      },
+      {
+        label: "हम साथ हैं",
+        desc: "हर ट्रिप पर दुर्घटना बीमा और विवाद में पूरी मदद।",
+      },
     ],
-    cta1: "ड्राइवर के रूप में रजिस्टर करें →",
-    cta2: "WhatsApp पर जुड़ें",
+    ctaNote: "जल्द लॉन्च हो रहा है",
+    cta1: "ऐप डाउनलोड करें",
+    cta2: "WhatsApp पर चैट करें",
   },
   proof: {
     stats: [
@@ -336,6 +404,29 @@ const hi: Translations = {
         badge: "सिर्फ बाटवा पर",
       },
     ],
+  },
+  driverTrust: {
+    eyebrow: "ड्राइवर क्यों भरोसा करते हैं बाटवा पर",
+    items: [
+      {
+        title: "शक से पहले पेमेंट",
+        desc: "ट्रिप कन्फर्म होते ही पेमेंट एस्क्रो में लॉक। कोई पीछा नहीं, कोई बहाना नहीं।",
+      },
+      {
+        title: "बिचौलिए का हिस्सा नहीं",
+        desc: "जीरो कमीशन। मालिक जो देता है वो सब सीधे तुम्हारे पास।",
+      },
+      {
+        title: "सबूत तुम्हारी तरफ",
+        desc: "हर ट्रिप पर हैंडओवर फोटो टाइमस्टैम्प के साथ। झूठा इल्जाम नहीं टिकता।",
+      },
+    ],
+  },
+  driverTestimonial: {
+    quote:
+      "बाटवा ने सच में टाइम पर पैसा दिया। पहली बार किसी ने बिना पीछा किए भेजा।",
+    name: "रमेश",
+    route: "रांची – कोलकाता",
   },
   cta: {
     headline: "आपके ट्रक बेकार नहीं बैठने चाहिए।",

@@ -124,6 +124,111 @@ const PROTECTION_ICONS = [
   <IconHistory key="his" />,
 ];
 
+/* ── Driver benefit card icons ───────────────────────────── */
+function IconDriverCoin() {
+  return (
+    <svg className="driver-card-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <circle cx="14" cy="14" r="10.5" stroke="currentColor" strokeWidth="1.75" />
+      <line x1="10" y1="10" x2="18" y2="10" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+      <line x1="10" y1="14" x2="18" y2="14" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+      <line x1="11" y1="10" x2="11" y2="19" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+      <line x1="15" y1="14" x2="11" y2="19" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconDriverPin() {
+  return (
+    <svg className="driver-card-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <path d="M14 3.5C9.31 3.5 5.5 7.31 5.5 12C5.5 18.5 14 24.5 14 24.5C14 24.5 22.5 18.5 22.5 12C22.5 7.31 18.69 3.5 14 3.5Z"
+        stroke="currentColor" strokeWidth="1.75" />
+      <circle cx="14" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function IconDriverWallet() {
+  return (
+    <svg className="driver-card-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <rect x="3" y="8" width="22" height="14" rx="3" stroke="currentColor" strokeWidth="1.75" />
+      <path d="M3 12.5H25" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="17.5" y="15" width="4.5" height="4" rx="1.5" fill="currentColor" opacity="0.45" />
+      <path d="M8 8V5.5C8 4.7 8.7 4 9.5 4H18.5C19.3 4 20 4.7 20 5.5V8"
+        stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconDriverBadge() {
+  return (
+    <svg className="driver-card-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <path d="M14 2.5L23.5 7V14C23.5 19.25 19.25 24 14 25.5C8.75 24 4.5 19.25 4.5 14V7L14 2.5Z"
+        stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
+      <path d="M10 14L13 17L18 11" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+const DRIVER_BENEFIT_ICONS = [
+  <IconDriverCoin key="coin" />,
+  <IconDriverPin key="pin" />,
+  <IconDriverWallet key="wallet" />,
+  <IconDriverBadge key="badge" />,
+];
+
+/* ── Driver trust strip icons ────────────────────────────── */
+function IconDTrustLock() {
+  return (
+    <svg className="dtrust-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <rect x="4.5" y="12.5" width="19" height="12" rx="2.5" stroke="currentColor" strokeWidth="1.75" />
+      <path d="M9 12.5V9.5C9 6.7 11.2 4.5 14 4.5C16.8 4.5 19 6.7 19 9.5V12.5"
+        stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+      <circle cx="14" cy="18.5" r="2" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function IconDTrustDirect() {
+  return (
+    <svg className="dtrust-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <circle cx="7" cy="14" r="4" stroke="currentColor" strokeWidth="1.75" />
+      <circle cx="21" cy="14" r="4" stroke="currentColor" strokeWidth="1.75" />
+      <line x1="11.5" y1="14" x2="16.5" y2="14" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+      <path d="M14.5 11L17.5 14L14.5 17" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function IconDTrustCamera() {
+  return (
+    <svg className="dtrust-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <rect x="3" y="7" width="22" height="16" rx="3" stroke="currentColor" strokeWidth="1.75" />
+      <circle cx="14" cy="15" r="4" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M10 7V5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M18 7V5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="21" cy="11" r="1.5" fill="currentColor" opacity="0.4" />
+    </svg>
+  );
+}
+
+const DRIVER_TRUST_ICONS = [
+  <IconDTrustLock key="lock" />,
+  <IconDTrustDirect key="direct" />,
+  <IconDTrustCamera key="camera" />,
+];
+
+/* ── WhatsApp icon ───────────────────────────────────────── */
+function IconWA() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+      <path d="M7.5 1C3.91 1 1 3.91 1 7.5C1 8.82 1.39 10.05 2.06 11.06L1 14L4.04 12.96C5.02 13.57 6.22 13.93 7.5 13.93C11.09 13.93 14 11.02 14 7.43C14 3.91 11.09 1 7.5 1Z"
+        stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+      <path d="M5.2 5.5C5.2 5.5 5.45 6.4 6.1 7.05C6.75 7.7 7.6 8.15 7.6 8.15L8.7 7.1C8.7 7.1 9.15 7.3 9.9 7.7C9.9 7.7 10.1 8.55 9.5 9C8.9 9.45 7 9.05 5.7 7.75C4.4 6.45 4 4.65 4.55 4C4.85 3.65 5.7 3.85 5.7 3.85L6.7 4.95L5.2 5.5Z"
+        stroke="currentColor" strokeWidth="0.9" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function IconApple() {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -364,21 +469,23 @@ export default function Home() {
                   <span className="hl-orange">{t.drivers.headline.orange}</span>{" "}
                   {t.drivers.headline.post}
                 </h2>
+                <p className="driver-hindi-accent">पैसा 100% पक्का — ट्रिप से पहले जमा।</p>
               </Reveal>
 
               <Reveal delay={1}>
-                <p className="driver-sub">{t.drivers.sub}</p>
+                <p className="driver-escrow-lead">{t.drivers.escrowLead}</p>
               </Reveal>
 
               <Reveal delay={2}>
-                <ul className="driver-benefits">
-                  {t.drivers.benefits.map((b) => (
-                    <li key={b} className="driver-benefit">
-                      <IconCheck />
-                      {b}
-                    </li>
+                <div className="driver-benefit-cards">
+                  {t.drivers.benefitCards.map(({ label, desc }, i) => (
+                    <div key={label} className="driver-benefit-card">
+                      {DRIVER_BENEFIT_ICONS[i]}
+                      <p className="driver-card-label">{label}</p>
+                      <p className="driver-card-desc">{desc}</p>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </Reveal>
 
               <Reveal delay={3}>
@@ -387,14 +494,59 @@ export default function Home() {
                     {t.drivers.cta1}
                   </a>
                   <a href="#" className="btn btn-outline-sm">
+                    <IconWA />
                     {t.drivers.cta2}
                   </a>
                 </div>
+                <p className="driver-cta-note">{t.drivers.ctaNote}</p>
               </Reveal>
             </div>
 
             <Reveal delay={2} className="driver-right">
               <DriverIllustration />
+            </Reveal>
+          </div>
+        </section>
+
+        {/* 5b ── DRIVER TRUST STRIP */}
+        <section className="driver-trust-strip">
+          <div className="driver-trust-inner">
+            <Reveal>
+              <p className="section-eyebrow">{t.driverTrust.eyebrow}</p>
+            </Reveal>
+            <div className="driver-trust-items">
+              {t.driverTrust.items.map(({ title, desc }, i) => (
+                <Reveal key={title} delay={((i + 1) as 1 | 2 | 3)}>
+                  <div className="driver-trust-item">
+                    {DRIVER_TRUST_ICONS[i]}
+                    <div>
+                      <p className="dtrust-title">{title}</p>
+                      <p className="dtrust-desc">{desc}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5c ── DRIVER TESTIMONIAL */}
+        <section className="driver-testimonial-section">
+          <div className="driver-testimonial-inner">
+            <Reveal>
+              <div className="driver-testimonial-card">
+                <span className="driver-testimonial-quote-mark" aria-hidden="true">&ldquo;</span>
+                <p className="driver-testimonial-quote">{t.driverTestimonial.quote}</p>
+                <div className="driver-testimonial-attr">
+                  <span className="driver-testimonial-avatar" aria-hidden="true">
+                    {t.driverTestimonial.name[0]}
+                  </span>
+                  <div>
+                    <span className="driver-testimonial-name">{t.driverTestimonial.name}</span>
+                    <span className="driver-testimonial-route"> · {t.driverTestimonial.route}</span>
+                  </div>
+                </div>
+              </div>
             </Reveal>
           </div>
         </section>
