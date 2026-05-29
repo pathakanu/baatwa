@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Nav from "@/components/Nav";
 import Reveal from "@/components/Reveal";
+import AppPreviewSection from "@/components/AppPreviewSection";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { translations, type Lang } from "@/translations";
 
 /* ── Static icon arrays (no translatable text) ─────────────── */
@@ -216,6 +218,71 @@ const DRIVER_TRUST_ICONS = [
   <IconDTrustDirect key="direct" />,
   <IconDTrustCamera key="camera" />,
 ];
+
+/* ── Pay model icons ─────────────────────────────────────── */
+function IconKm() {
+  return (
+    <svg className="pay-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <circle cx="5" cy="22" r="3" stroke="currentColor" strokeWidth="1.75" />
+      <circle cx="27" cy="22" r="3" stroke="currentColor" strokeWidth="1.75" />
+      <path d="M8 22 C8 14 12 10 16 10 C20 10 24 14 24 22" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+      <path d="M13 17 L16 14 L19 17" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function IconBhatta() {
+  return (
+    <svg className="pay-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <rect x="5" y="8" width="22" height="16" rx="3" stroke="currentColor" strokeWidth="1.75" />
+      <path d="M5 13h22" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="11" cy="19" r="2" stroke="currentColor" strokeWidth="1.4" />
+      <line x1="16" y1="17.5" x2="23" y2="17.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <line x1="16" y1="20.5" x2="21" y2="20.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconDetention() {
+  return (
+    <svg className="pay-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <circle cx="16" cy="16" r="11" stroke="currentColor" strokeWidth="1.75" />
+      <path d="M16 9V16L20.5 19" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 26 L7 29" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M23 26 L25 29" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconAdvance() {
+  return (
+    <svg className="pay-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <rect x="4" y="10" width="24" height="16" rx="3" stroke="currentColor" strokeWidth="1.75" />
+      <path d="M4 15h24" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M11 10V7.5C11 6.1 12.1 5 13.5 5h5C19.9 5 21 6.1 21 7.5V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M14 20h4M16 18v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconBonus() {
+  return (
+    <svg className="pay-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M16 4L19.2 11.2L27 12.2L21.5 17.4L23 25L16 21.3L9 25L10.5 17.4L5 12.2L12.8 11.2L16 4Z"
+        stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function IconExpenses() {
+  return (
+    <svg className="pay-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M16 3L28 9V17C28 23.5 22.5 29 16 30.5C9.5 29 4 23.5 4 17V9L16 3Z"
+        stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
+      <path d="M11 16L14.5 19.5L21 13" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 /* ── WhatsApp icon ───────────────────────────────────────── */
 function IconWA() {
@@ -456,6 +523,110 @@ export default function Home() {
           </div>
         </section>
 
+        {/* 4b ── APP PREVIEW */}
+        <AppPreviewSection />
+
+        {/* 4c ── HOW BAATWA PAYS (pricing model) */}
+        <section className="pay-model" id="how-we-pay">
+          <div className="pay-model-inner">
+            <Reveal>
+              <p className="section-eyebrow">Transparent pay — for drivers</p>
+              <h2 className="section-title">One honest number. No hidden deductions.</h2>
+              <p className="pay-model-lead">
+                Drivers deserve to know exactly what they're earning before they start the engine. Baatwa builds the full rate upfront — distance, time, difficulty, and expenses — then shows one guaranteed number.
+              </p>
+            </Reveal>
+
+            <div className="pay-cards">
+              <Reveal delay={1}>
+                <div className="pay-card pay-card--primary">
+                  <IconKm />
+                  <p className="pay-card-label">Distance base (₹/km)</p>
+                  <p className="pay-card-desc">
+                    The headline rate drivers understand and trust. Set by truck class — a 12-wheeler earns more per km than a mini. This is the bulk of every gig.
+                  </p>
+                  <span className="pay-pill">Headline rate</span>
+                </div>
+              </Reveal>
+
+              <Reveal delay={2}>
+                <div className="pay-card">
+                  <IconBhatta />
+                  <p className="pay-card-label">Daily allowance (bhatta)</p>
+                  <p className="pay-card-desc">
+                    Multi-day hauls add a fixed daily bhatta — so a driver on a 4-day run is compensated for every night away, not just the kilometres.
+                  </p>
+                  <span className="pay-pill">Multi-day trips</span>
+                </div>
+              </Reveal>
+
+              <Reveal delay={3}>
+                <div className="pay-card">
+                  <IconDetention />
+                  <p className="pay-card-label">Detention pay (₹/hour)</p>
+                  <p className="pay-card-desc">
+                    2 free hours at loading/unloading. Every hour after that, the owner pays the driver. The clock is visible to both — fair, live, and automatic.
+                  </p>
+                  <span className="pay-pill pay-pill--amber">Waiting time</span>
+                </div>
+              </Reveal>
+
+              <Reveal delay={1}>
+                <div className="pay-card">
+                  <IconAdvance />
+                  <p className="pay-card-label">Fuel &amp; food advance at pickup</p>
+                  <p className="pay-card-desc">
+                    Cash credited before the truck moves. Running out of money is never a reason to stop. The advance is deducted from the final payout — not from anywhere else.
+                  </p>
+                  <span className="pay-pill pay-pill--green">Released at pickup</span>
+                </div>
+              </Reveal>
+
+              <Reveal delay={2}>
+                <div className="pay-card">
+                  <IconBonus />
+                  <p className="pay-card-label">Completion bonus</p>
+                  <p className="pay-card-desc">
+                    ₹500 extra waiting at the destination. A driver who knows there's a bonus at the finish line thinks twice before walking near the end.
+                  </p>
+                  <span className="pay-pill pay-pill--green">On delivery</span>
+                </div>
+              </Reveal>
+
+              <Reveal delay={3}>
+                <div className="pay-card">
+                  <IconExpenses />
+                  <p className="pay-card-label">Diesel, FASTag &amp; labour — owner's</p>
+                  <p className="pay-card-desc">
+                    These are never buried in the driver's rate. Diesel, tolls, and loading/unloading labour are stated clearly as the owner's expense — so the driver's number is clean.
+                  </p>
+                  <span className="pay-pill pay-pill--green">Owner pays</span>
+                </div>
+              </Reveal>
+            </div>
+
+            <Reveal delay={2}>
+              <div className="pay-model-formula">
+                <p className="pay-formula-title">How the gig rate is built</p>
+                <div className="pay-formula-row">
+                  <span className="pay-formula-item pay-formula-base">₹/km × distance</span>
+                  <span className="pay-formula-op">+</span>
+                  <span className="pay-formula-item">bhatta × days</span>
+                  <span className="pay-formula-op">+</span>
+                  <span className="pay-formula-item pay-formula-amber">detention (after 2h)</span>
+                  <span className="pay-formula-op">+</span>
+                  <span className="pay-formula-item pay-formula-amber">difficulty × multiplier</span>
+                </div>
+                <p className="pay-formula-note">
+                  Ghats, night driving, and bad roads add a multiplier — disclosed before the driver accepts, never sprung mid-trip.
+                  <br />
+                  Paid out as: <strong>advance at pickup</strong> + <strong>daily portion</strong> (multi-day) + <strong>completion balance</strong> + <strong>₹500 bonus</strong>.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* 5 ── FOR DRIVERS */}
         <section className="for-drivers" id="for-drivers">
           <div className="drivers-inner">
@@ -636,6 +807,9 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* FLOATING WHATSAPP */}
+      <WhatsAppButton />
 
       {/* 9 ── FOOTER */}
       <footer className="footer">
