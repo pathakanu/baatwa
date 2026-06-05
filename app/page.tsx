@@ -425,6 +425,66 @@ function DriverIllustration() {
   );
 }
 
+/* ── Backhaul route visualization ───────────────────────────── */
+function BackhaulRouteViz() {
+  return (
+    <div className="bh-route-viz">
+      {/* Outbound lane A→B */}
+      <div className="bh-lane">
+        <div className="bh-city bh-city--orange">A</div>
+        <div className="bh-road bh-road--loaded">
+          <div className="bh-dashes">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <span key={i} className="bh-dash" />
+            ))}
+          </div>
+          <svg className="bh-truck-svg" viewBox="0 0 68 26" fill="none" aria-hidden="true">
+            <rect x="0" y="2" width="42" height="16" rx="3" fill="#E85D24" />
+            <rect x="39" y="-1" width="22" height="16" rx="2.5" fill="#c94e1c" />
+            <rect x="43" y="2" width="14" height="10" rx="1.5" fill="rgba(255,140,100,0.3)" />
+            <circle cx="9" cy="22" r="5.5" fill="#1a2e47" /><circle cx="9" cy="22" r="2" fill="#6b7280" />
+            <circle cx="30" cy="22" r="5.5" fill="#1a2e47" /><circle cx="30" cy="22" r="2" fill="#6b7280" />
+            <circle cx="52" cy="22" r="5" fill="#1a2e47" /><circle cx="52" cy="22" r="1.75" fill="#6b7280" />
+          </svg>
+          <span className="bh-leg-tag bh-leg-tag--loaded">Loaded →</span>
+        </div>
+        <div className="bh-city bh-city--navy">B</div>
+      </div>
+
+      {/* Return lane B→A */}
+      <div className="bh-lane bh-lane--return">
+        <div className="bh-city bh-city--orange">A</div>
+        <div className="bh-road bh-road--return">
+          <div className="bh-dashes">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <span key={i} className="bh-dash" />
+            ))}
+          </div>
+          <svg className="bh-truck-svg bh-truck-flip" viewBox="0 0 68 26" fill="none" aria-hidden="true">
+            <rect x="0" y="2" width="42" height="16" rx="3" fill="#0F6E56" />
+            <rect x="39" y="-1" width="22" height="16" rx="2.5" fill="#0a5542" />
+            <rect x="43" y="2" width="14" height="10" rx="1.5" fill="rgba(52,211,153,0.2)" />
+            <circle cx="9" cy="22" r="5.5" fill="#1a2e47" /><circle cx="9" cy="22" r="2" fill="#6b7280" />
+            <circle cx="30" cy="22" r="5.5" fill="#1a2e47" /><circle cx="30" cy="22" r="2" fill="#6b7280" />
+            <circle cx="52" cy="22" r="5" fill="#1a2e47" /><circle cx="52" cy="22" r="1.75" fill="#6b7280" />
+          </svg>
+          <span className="bh-leg-tag bh-leg-tag--return">← Return load</span>
+        </div>
+        <div className="bh-city bh-city--navy">B</div>
+      </div>
+
+      {/* Math row */}
+      <div className="bh-math-row">
+        <span className="bh-math-chip bh-math-chip--out">Outbound ₹/km</span>
+        <span className="bh-math-op">+</span>
+        <span className="bh-math-chip bh-math-chip--ret">Return ₹/km</span>
+        <span className="bh-math-op">=</span>
+        <span className="bh-math-chip bh-math-chip--result">Lower cost per loaded km</span>
+      </div>
+    </div>
+  );
+}
+
 /* ═══════════════════════════════════════════════════════════════
    PAGE
    ═══════════════════════════════════════════════════════════════ */
@@ -519,6 +579,60 @@ export default function Home() {
                   </div>
                 </Reveal>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4a ── BACKHAUL ENGINE */}
+        <section className="backhaul-section" id="backhaul">
+          <div className="backhaul-inner">
+            <Reveal>
+              <p className="backhaul-eyebrow">The differentiator</p>
+              <h2 className="backhaul-title">The empty return leg is where the surplus comes from.</h2>
+              <p className="backhaul-lead">
+                A truck earns A→B loaded, then crawls back B→A empty — burning fuel with zero revenue.
+                That waste is baked into the outbound price. Fill the return and the effective cost per loaded km drops,
+                creating surplus for all three parties without squeezing anyone.
+              </p>
+            </Reveal>
+
+            <div className="backhaul-body">
+              <Reveal delay={1} className="backhaul-viz-wrap">
+                <BackhaulRouteViz />
+              </Reveal>
+
+              <div className="backhaul-points">
+                <Reveal delay={1}>
+                  <div className="backhaul-point">
+                    <div className="bh-point-marker bh-point-marker--orange" />
+                    <div>
+                      <p className="bh-point-who">Contractor</p>
+                      <p className="bh-point-title">Pays less</p>
+                      <p className="bh-point-desc">Backhaul recovery and removed broker margin lower the effective trip cost. The full price breakdown is always visible — no hidden markup.</p>
+                    </div>
+                  </div>
+                </Reveal>
+                <Reveal delay={2}>
+                  <div className="backhaul-point">
+                    <div className="bh-point-marker bh-point-marker--white" />
+                    <div>
+                      <p className="bh-point-who">Owner</p>
+                      <p className="bh-point-title">Earns more per km</p>
+                      <p className="bh-point-desc">Both legs earn revenue. The blended cost per loaded km drops — more margin without raising the contractor&apos;s price.</p>
+                    </div>
+                  </div>
+                </Reveal>
+                <Reveal delay={3}>
+                  <div className="backhaul-point">
+                    <div className="bh-point-marker bh-point-marker--green" />
+                    <div>
+                      <p className="bh-point-who">Driver</p>
+                      <p className="bh-point-title">Gets guaranteed fair pay</p>
+                      <p className="bh-point-desc">The fair-rate floor is enforced by escrow. Baatwa pays drivers direct — the recovered surplus funds the floor without squeezing anyone else.</p>
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
             </div>
           </div>
         </section>
